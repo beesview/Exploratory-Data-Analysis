@@ -1,5 +1,6 @@
 # assume motor vehicles is anything like Motor Vehicle in SCC.Level.Two
 library(ggplot2)
+source(load_data.R)
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
 vehiclesSCC <- SCC[vehicles,]$SCC
 vehiclesNEI <- NEI[NEI$SCC %in% vehiclesSCC,]

@@ -26,7 +26,7 @@ barplot(
 
 dev.off()
 ````
-#### From the plot, total emissions have decreased in the US from 1999 to 2008.
+#### Answer to Q1: total emissions have decreased in the US from 1999 to 2008.
 
 #### aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
 ````
@@ -44,7 +44,7 @@ barplot(
 
 dev.off()
 ````
-#### Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland from 1999 to 2008.
+#### Answer to Q2: Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland from 1999 to 2008.
 
 #### Using the ggplot2 plotting system
 ````
@@ -61,8 +61,7 @@ png(filename='plot3.png')
 print(ggp)
 dev.off()
 ````
-#### The non-road, nonpoint, on-road source types have all seen decreased emissions overall from 1999-2008 in Baltimore 
-#### The point source saw a slight increase overall from 1999-2008. The point source show a significant increase until 2005 then decreases in 2008 to just above the starting values.
+#### Answer to Q3: The non-road, nonpoint, on-road source types have all seen decreased emissions overall from 1999-2008 in Baltimore. The point source show a significant increase until 2005 then decreases in 2008 to just above the starting values.
 
 #### Subseting coal combustion related NEI data, assuming that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' and SCC.Level.Four contains the substring 'coal'.
 ````
@@ -83,7 +82,7 @@ png(filename='plot4.png')
 print(ggp)
 dev.off()
 ````
-#### Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008
+#### Answer to Q4: Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008
 
 #### assuming motor vehicles is something like Motor Vehicle in SCC.Level.Two
 ````
@@ -103,7 +102,7 @@ png(filename='plot5.png')
 print(ggp)
 dev.off()
 ````
-#### Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City
+#### Answer to Q5: Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City
 ````
 library(ggplot2)
 

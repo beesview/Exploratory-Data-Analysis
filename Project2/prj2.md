@@ -62,10 +62,9 @@ print(ggp)
 dev.off()
 ````
 #### The non-road, nonpoint, on-road source types have all seen decreased emissions overall from 1999-2008 in Baltimore 
-#### The point source saw a slight increase overall from 1999-2008. Also note that the point source saw a significant increase until 2005 at which point it decreases again by 2008 to just above the starting values.
+#### The point source saw a slight increase overall from 1999-2008. The point source show a significant increase until 2005 then decreases in 2008 to just above the starting values.
 
-#### Subset coal combustion related NEI data
-#### assume that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' and SCC.Level.Four contains the substring 'coal'.
+#### Subseting coal combustion related NEI data, assuming that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' and SCC.Level.Four contains the substring 'coal'.
 ````
 library(ggplot2)
 combustionRelated <- grepl("comb", SCC$SCC.Level.One, ignore.case=TRUE)
@@ -86,7 +85,7 @@ dev.off()
 ````
 #### Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008
 
-#### assume motor vehicles is anything like Motor Vehicle in SCC.Level.Two
+#### assuming motor vehicles is something like Motor Vehicle in SCC.Level.Two
 ````
 library(ggplot2)
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)

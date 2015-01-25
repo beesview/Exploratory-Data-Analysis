@@ -5,16 +5,16 @@ download.file(url,"NEI_data.zip")
 unzip("NEI_data.zip")
 ````
 #### Read files
-
+````
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
-
+````
 #### Have total emissions from PM2.5 decreased in the United States from 1999 to 2008
-
+````
 aggNEI <- aggregate(Emissions ~ year,NEI, sum)
-
+````
 #### Using the base plotting system, make a plot showing the total PM2.5 emission from all sources for each of the years 1999, 2002, 2005, and 2008
-
+````
 png(filename='plot1.png')
 barplot(
   (aggNEI$Emissions)/10^6,
@@ -25,11 +25,11 @@ barplot(
 )
 
 dev.off()
-
+````
 #### From the plot, total emissions have decreased in the US from 1999 to 2008.
 
 #### aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
-
+````
 baltimoreNEI <- NEI[NEI$fips=="24510",]
 aggBaltimore <- aggregate(Emissions ~ year, baltimoreNEI,sum)
 
@@ -43,11 +43,11 @@ barplot(
 )
 
 dev.off()
-
+````
 #### Overall total emissions from PM2.5 have decreased in Baltimore City, Maryland from 1999 to 2008.
 
 #### Using the ggplot2 plotting system
-
+````
 library(ggplot2)
 
 ggp <- ggplot(baltimoreNEI,aes(factor(year),Emissions,fill=type)) +
@@ -60,7 +60,7 @@ ggp <- ggplot(baltimoreNEI,aes(factor(year),Emissions,fill=type)) +
 png(filename='plot3.png')
 print(ggp)
 dev.off()
-
+````
 #### The non-road, nonpoint, on-road source types have all seen decreased emissions overall from 1999-2008 in Baltimore 
 #### The point source saw a slight increase overall from 1999-2008. Also note that the point source saw a significant 
 #### increase until 2005 at which point it decreases again by 2008 to just above the starting values.
@@ -68,7 +68,7 @@ dev.off()
 #### Subset coal combustion related NEI data
 #### assume that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' 
 #### and SCC.Level.Four contains the substring 'coal'.
-
+````
 library(ggplot2)
 combustionRelated <- grepl("comb", SCC$SCC.Level.One, ignore.case=TRUE)
 coalRelated <- grepl("coal", SCC$SCC.Level.Four, ignore.case=TRUE) 
@@ -85,11 +85,11 @@ ggp <- ggplot(combustionNEI,aes(factor(year),Emissions/10^5)) +
 png(filename='plot4.png')
 print(ggp)
 dev.off()
-
+````
 #### Emissions from coal combustion related sources have decreased by about 1/3 from 1999-2008
 
 #### assume motor vehicles is anything like Motor Vehicle in SCC.Level.Two
-
+````
 library(ggplot2)
 vehicles <- grepl("vehicle", SCC$SCC.Level.Two, ignore.case=TRUE)
 vehiclesSCC <- SCC[vehicles,]$SCC
@@ -105,9 +105,9 @@ ggp <- ggplot(baltimoreVehiclesNEI,aes(factor(year),Emissions)) +
 png(filename='plot5.png')
 print(ggp)
 dev.off()
-
+````
 #### Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City
-
+````
 library(ggplot2)
 
 vehiclesBaltimoreNEI <- vehiclesNEI[vehiclesNEI$fips == 24510,]
@@ -126,5 +126,5 @@ ggp <- ggplot(bothNEI, aes(x=factor(year), y=Emissions, fill=city)) +
 png(filename='plot6.png')
 print(ggp)
 dev.off()
-
+````
 #### Comparing to Baltimore, Los Angeles County has seen the greater changes over time in motor vehicle emissions from 1999-2008

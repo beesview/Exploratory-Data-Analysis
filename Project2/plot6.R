@@ -1,5 +1,6 @@
 # Emissions from motor vehicle sources have dropped from 1999-2008 in Baltimore City
 library(ggplot2)
+source(load_data.R)
 
 vehiclesBaltimoreNEI <- vehiclesNEI[vehiclesNEI$fips == 24510,]
 vehiclesBaltimoreNEI$city <- "Baltimore City"

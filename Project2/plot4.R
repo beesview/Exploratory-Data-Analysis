@@ -2,6 +2,7 @@
 # assume that coal combustion related SCC records are those where SCC.Level.One contains the substring 'comb' 
 # and SCC.Level.Four contains the substring 'coal'.
 library(ggplot2)
+source(load_data.R)
 combustionRelated <- grepl("comb", SCC$SCC.Level.One, ignore.case=TRUE)
 coalRelated <- grepl("coal", SCC$SCC.Level.Four, ignore.case=TRUE) 
 coalCombustion <- (combustionRelated & coalRelated)

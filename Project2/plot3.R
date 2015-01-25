@@ -1,5 +1,6 @@
 # Using the ggplot2 plotting system
 library(ggplot2)
+source(load_data.R)
 
 ggp <- ggplot(baltimoreNEI,aes(factor(year),Emissions,fill=type)) +
   geom_bar(stat="identity") +

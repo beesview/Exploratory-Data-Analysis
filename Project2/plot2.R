@@ -1,4 +1,5 @@
 #aggregate total emissions from PM2.5 for Baltimore City, Maryland (fips="24510") from 1999 to 2008.
+source(load_data.R)
 baltimoreNEI <- NEI[NEI$fips=="24510",]
 aggBaltimore <- aggregate(Emissions ~ year, baltimoreNEI,sum)
 
